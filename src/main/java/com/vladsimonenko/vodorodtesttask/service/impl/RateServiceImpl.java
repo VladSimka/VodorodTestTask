@@ -34,8 +34,8 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public List<RateEntity> saveAllRatesByDateFromExternalApi(RateLoadingRequestDto dto) {
-        validateDate(dto.date());
-        Date currentDate = Date.valueOf(dto.date());
+        validateDate(dto.getDate());
+        Date currentDate = Date.valueOf(dto.getDate());
         if (rateRepository.existsByDate(currentDate)) {
             throw new RatesAlreadyExistsException("errors.rates.exists_by_date");
         }
